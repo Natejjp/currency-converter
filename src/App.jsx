@@ -17,19 +17,22 @@ export function App() {
     <main>
       <h1>Currency Converter</h1>
       <ul>
+        <li>Enter Amount USD </li>
+        <input
+          type="number"
+          value={amount}
+          onChange={(event) => setAmount(event.target.value)}
+        />
+        <button>Convert</button>
         {Object.entries(currency.rates).map(
           ([currencyCode, currencyDetails]) => {
             return (
               <li key={currencyCode}>
-                {currencyCode}: {currencyDetails}
+                {currencyCode}: {(currencyDetails * amount).toFixed(2)}
               </li>
             )
           }
         )}
-        <li>Enter Amount USD </li>
-        <input type="text" />
-
-        <button>Convert</button>
       </ul>
     </main>
   )
