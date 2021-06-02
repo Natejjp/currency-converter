@@ -2,16 +2,15 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 export function App() {
-  const [currency, setCurrency] = useState({})
+  const [currency, setCurrency] = useState({ rates: [] })
+  const [amount, setAmount] = useState(1)
 
   useEffect(async function () {
     const response = await axios.get(
-      'http://api.exchangeratesapi.io/v1/latest?access_key=56a4348392b313cd26250dccbcbb645f'
+      'http://api.exchangeratesapi.io/v1/latest?access_key=1b2897f6810c52c1b0c6f9a085306523'
     )
-    if (response.status === 200) {
-      console.log(response.base)
-      setCurrency(response.rate.USD)
-    }
+
+    console.log(response.data)
   }, [])
 
   return (
